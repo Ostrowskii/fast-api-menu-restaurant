@@ -38,7 +38,7 @@ def get_posts():
 
 # get single post {id}
 
-@app.get("/posts/{id}", tags=[posts])
+@app.get("/posts/{id}", tags=["posts"])
 def get_one_post(id: int):
     if id> len(posts):
         return{
@@ -53,9 +53,9 @@ def get_one_post(id: int):
 
 # Post a food to menu
 
-@app.post("/posts", tags= ["posts"])
+@app.post("/posts", tags=["posts"])
 def add_post(post: PostSchema):
-    post.id = len(post) + 1
+    post.id = len(posts) + 1
     posts.append(post.dict())
     return {
         "info":"Post Added!"
